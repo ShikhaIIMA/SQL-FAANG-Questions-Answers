@@ -1,2 +1,22 @@
-#LinkedIn Power Creators (Part 1)
+i) LinkedIn Power Creators (Part 1) https://datalemur.com/questions/linkedin-power-creators
 
+Answer
+SELECT pers.id 
+FROM personal_profiles as pers
+INNER JOIN company_pages as comp
+ON pers.employer_id=comp.company_id
+WHERE pers.followers > comp.followers
+ORDER BY pers.id ;
+
+
+
+
+
+ii) Final Account Balance https://datalemur.com/questions/final-account-balance
+SELECT account_id,
+  SUM(CASE WHEN transaction_type='Deposit' THEN amount
+      ELSE (-1*amount)
+      END
+      ) as total_amt
+FROM transactions
+GROUP BY account_id;
